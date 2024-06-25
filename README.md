@@ -1,3 +1,7 @@
+# Planning details
+
+https://rahul-hingve.notion.site/Project-Real-Time-Collaboration-Tool-for-Developers-15fd317307364e6c99cd6d9ccd5c9c90
+
 # Turborepo starter
 
 This is an official starter Turborepo.
