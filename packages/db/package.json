@@ -11,6 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.16.0",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
     "prisma": "^5.16.0"
+  },
+  "exports": {
+    "./client": "./index.ts"
   }
 }
