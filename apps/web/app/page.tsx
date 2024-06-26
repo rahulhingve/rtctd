@@ -5,7 +5,7 @@ import { options } from "./api/auth/[...nextauth]/options";
 
 export default async function Page() {
  const session = await getServerSession(options);
- if (session) {
+ if (session?.user) {
   redirect('/dashboard')
 } else {
   redirect('/api/auth/signin')

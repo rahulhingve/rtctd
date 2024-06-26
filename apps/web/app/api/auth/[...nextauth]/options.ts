@@ -2,7 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import db from "@repo/db/client"
+import db from "@repo/db/client";
+
 
 
 
@@ -91,7 +92,10 @@ export const options: NextAuthOptions = {
                 }
             }
             return true;
-        }
+        },
+    
        
-    }
+    },
+    
+    
 };
