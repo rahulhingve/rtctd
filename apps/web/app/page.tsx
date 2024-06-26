@@ -1,11 +1,14 @@
-import Image from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
 
-export default function Home() {
-  return (
-   <div>
-    heelloooooo
-   </div>
-  );
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { options } from "./api/auth/[...nextauth]/options";
+
+export default async function Page() {
+ const session = await getServerSession(options);
+ if (session) {
+  redirect('/dashboard')
+} else {
+  redirect('/api/auth/signin')
 }
+}
+
