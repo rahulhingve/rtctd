@@ -13,11 +13,13 @@
     "@monaco-editor/react": "^4.6.0",
     "@repo/ui": "*",
     "@types/jsonwebtoken": "^9.0.6",
+    "axios": "^1.7.2",
     "jsonwebtoken": "^9.0.2",
     "next": "^14.1.1",
     "next-auth": "^4.24.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
