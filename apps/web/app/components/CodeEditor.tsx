@@ -17,7 +17,7 @@ const CodeEditor = () => {
   const onSelect = (language:any)=>{
     setLanguage(language)
     setValue(
-      CODE_SNIPPETS[language]
+      CODE_SNIPPETS[language] 
     )
   }
 
