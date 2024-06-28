@@ -8,7 +8,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { LANGUAGE_VERSIONS } from '../../constants'
 
 const languages = Object.entries(LANGUAGE_VERSIONS)
-const ACTIVE_COLOR = "blue";
+
 
 const LanguageSelector = ({language,onSelect}:any) => {
     return (
@@ -27,9 +27,9 @@ const LanguageSelector = ({language,onSelect}:any) => {
            
            {
             languages.map(([lang,version])=>(
-                <MenuItem  key={lang}><button onClick={()=> onSelect(lang)} className={`group flex w-full text-${lang===language?ACTIVE_COLOR:""}-700 items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10`} >
+                <MenuItem  key={lang}><button onClick={()=> onSelect(lang)} className={`group flex w-full ${lang===language? "text-blue-700":"text-white"} items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10`} >
                
-               {lang} &nbsp; <span className='bg-gray-800'>
+               {lang} &nbsp; <span className=' text-white'>
                 {version}
                </span>
              
