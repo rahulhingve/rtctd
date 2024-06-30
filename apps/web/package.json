@@ -22,7 +22,8 @@
     "react-toastify": "^10.0.5",
     "y-monaco": "^0.1.5",
     "y-webrtc": "^10.3.0",
-    "yjs": "^13.6.18"
+    "yjs": "^13.6.18",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

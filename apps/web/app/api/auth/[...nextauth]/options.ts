@@ -3,9 +3,13 @@ import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import db from "@repo/db/client";
+import z from "zod";
 
 
-
+const credentialsSchema = z.object({
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(8, "Password must be at least 8 characters long"),
+});
 
 export const options: NextAuthOptions = {
     providers: [
@@ -25,20 +29,25 @@ export const options: NextAuthOptions = {
             },
 
             async authorize(credentials: any) {
-                if (!credentials) {
-                    throw new Error("missing credentials")
+
+                const parsedCredentials = credentialsSchema.safeParse(credentials);
+
+                if (!parsedCredentials.success) {
+                    throw new Error(parsedCredentials.error.errors.map(e => e.message).join(", "));
                 }
-                const hashedPassword = await bcrypt.hash(credentials.password, 10);
+                const { email, password } = parsedCredentials.data;
+
+                const hashedPassword = await bcrypt.hash(password, 10);
 
                 try {
                     const existingUser = await db.user.findUnique({
                         where: {
-                            email: credentials.email,
+                            email
                         },
                     });
 
                     if (existingUser) {
-                        const passwordValidation = await bcrypt.compare(credentials.password, existingUser.password);
+                        const passwordValidation = await bcrypt.compare(password, existingUser.password);
                         if (passwordValidation) {
                             return {
                                 id: existingUser.id.toString(),
@@ -51,7 +60,7 @@ export const options: NextAuthOptions = {
 
                     const user = await db.user.create({
                         data: {
-                            email: credentials.email,
+                            email,
                             password: hashedPassword,
                         },
                     });

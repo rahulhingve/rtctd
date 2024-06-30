@@ -10,7 +10,7 @@ const page = async () => {
 
     const session = await getServerSession(options);
 if(!session?.user){
-  redirect("/api/auth/signin")
+  redirect("/")
 }
   return (
     <div>
