@@ -11,7 +11,9 @@ import { MonacoBinding } from 'y-monaco';
 const CodeEditor = () => {
   const editorRef = useRef()
   const [value, setValue] = useState('')
-  const [language, setLanguage] = useState('javascript')
+  const [language, setLanguage] = useState('Select Language')
+  const docRef = useRef();
+  const providerRef = useRef();
 
   const onMount = (editor: any, monaco: any) => {
     editorRef.current = editor;
@@ -23,16 +25,39 @@ const CodeEditor = () => {
     const type = doc.getText("monaco");
     const binding = new MonacoBinding(type, editorRef.current?.getModel(),new Set([editorRef.current]),provider.awareness);
 
+
+    docRef.current = doc;
+    providerRef.current = provider;
+
+ 
+    const languageMap = doc.getMap('language');
+
+    languageMap.observe(() => {
+      const sharedLanguage = languageMap.get('language');
+      if (sharedLanguage && sharedLanguage !== language) {
+        setLanguage(sharedLanguage);
+        setValue(CODE_SNIPPETS[sharedLanguage]);
+      }
+    });
+
+    
+    languageMap.set('language', language);
+
+    
 console.log(provider.awareness);
   }
 
-  const onSelect = (language: any) => {
-    setLanguage(language)
+  const onSelect = (selectedLanguage: any) => {
+    setLanguage(selectedLanguage)
 
     setValue(
 
-      CODE_SNIPPETS[language]
+      CODE_SNIPPETS[selectedLanguage]
     )
+    if (docRef.current) {
+      const languageMap = docRef.current.getMap('language');
+      languageMap.set('language', selectedLanguage);
+    }
   }
 
   return (
