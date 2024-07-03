@@ -6,10 +6,10 @@ import db from "@repo/db/client";
 import z from "zod";
 
 
-const credentialsSchema = z.object({
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters long"),
-});
+// const credentialsSchema = z.object({
+//     email: z.string().email("Invalid email address"),
+//     password: z.string().min(8, "Password must be at least 8 characters long"),
+// });
 
 export const options: NextAuthOptions = {
     providers: [
@@ -19,62 +19,62 @@ export const options: NextAuthOptions = {
 
         }),
 
-        CredentialsProvider({
-            name: "Credentials",
-            credentials: {
-                // name: { label: "name", type: "text", placeholder: "john doe" },
-                email: { label: "email", type: "text", placeholder: "exmail@gmail.com" },
-                password: { label: "Password", type: "password" },
+        // CredentialsProvider({
+        //     name: "Credentials",
+        //     credentials: {
+        //         // name: { label: "name", type: "text", placeholder: "john doe" },
+        //         email: { label: "email", type: "text", placeholder: "exmail@gmail.com" },
+        //         password: { label: "Password", type: "password" },
 
-            },
+        //     },
 
-            async authorize(credentials: any) {
+        //     async authorize(credentials: any) {
 
-                const parsedCredentials = credentialsSchema.safeParse(credentials);
+        //         const parsedCredentials = credentialsSchema.safeParse(credentials);
 
-                if (!parsedCredentials.success) {
-                    throw new Error(parsedCredentials.error.errors.map(e => e.message).join(", "));
-                }
-                const { email, password } = parsedCredentials.data;
+        //         if (!parsedCredentials.success) {
+        //             throw new Error(parsedCredentials.error.errors.map(e => e.message).join(", "));
+        //         }
+        //         const { email, password } = parsedCredentials.data;
 
-                const hashedPassword = await bcrypt.hash(password, 10);
+        //         const hashedPassword = await bcrypt.hash(password, 10);
 
-                try {
-                    const existingUser = await db.user.findUnique({
-                        where: {
-                            email
-                        },
-                    });
+        //         try {
+        //             const existingUser = await db.user.findUnique({
+        //                 where: {
+        //                     email
+        //                 },
+        //             });
 
-                    if (existingUser) {
-                        const passwordValidation = await bcrypt.compare(password, existingUser.password);
-                        if (passwordValidation) {
-                            return {
-                                id: existingUser.id.toString(),
-                                email: existingUser.email,
-                            };
-                        } else {
-                            throw new Error("Invalid password");
-                        }
-                    }
+        //             if (existingUser) {
+        //                 const passwordValidation = await bcrypt.compare(password, existingUser.password);
+        //                 if (passwordValidation) {
+        //                     return {
+        //                         id: existingUser.id.toString(),
+        //                         email: existingUser.email,
+        //                     };
+        //                 } else {
+        //                     throw new Error("Invalid password");
+        //                 }
+        //             }
 
-                    const user = await db.user.create({
-                        data: {
-                            email,
-                            password: hashedPassword,
-                        },
-                    });
+        //             const user = await db.user.create({
+        //                 data: {
+        //                     email,
+        //                     password: hashedPassword,
+        //                 },
+        //             });
 
-                    return {
-                        id: user.id.toString(),
-                        email: user.email,
-                    };
-                } catch (e) {
-                    console.error("Error during user creation or lookup:", e);
-                    throw new Error("Internal server error");
-                }
-            },
-        }),
+        //             return {
+        //                 id: user.id.toString(),
+        //                 email: user.email,
+        //             };
+        //         } catch (e) {
+        //             console.error("Error during user creation or lookup:", e);
+        //             throw new Error("Internal server error");
+        //         }
+        //     },
+        // }),
     ],
     callbacks: {
         async signIn({ user, account, profile }) {
@@ -95,6 +95,7 @@ export const options: NextAuthOptions = {
                     await db.user.create({
                         data: {
                             email: email,
+                            name:user.name,
                             password: "", // No password for GitHub users
                         },
                     });
@@ -102,6 +103,7 @@ export const options: NextAuthOptions = {
             }
             return true;
         },
+      
     
        
     },
