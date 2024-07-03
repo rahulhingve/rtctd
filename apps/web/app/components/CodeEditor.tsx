@@ -8,7 +8,7 @@ import * as Y from 'yjs';
 import { WebrtcProvider } from 'y-webrtc';
 import { MonacoBinding } from 'y-monaco';
 
-// Utility function to generate unique room ID
+
 const generateRoomId = () => {
   return 'room_' + Math.random().toString(36).substr(2, 9);
 };
