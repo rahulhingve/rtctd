@@ -10,16 +10,16 @@ export function LandingPage() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
 
-     
+
       <header className="px-4 lg:px-6 h-14 flex items-center">
-   
+
 
       </header>
       <main className="flex-1">
-      
+
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-          <h2 className="max-w-[600px] text-muted-foreground md:text-xl">Hello, {session? session.user?.name:""}</h2>
+            <h2 className="max-w-[600px] text-muted-foreground md:text-xl">Hello, {session ? session.user?.name : ""}</h2>
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -28,7 +28,7 @@ export function LandingPage() {
 
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    This is a powerful tool that allows developers to work together in real-time,
+                    Syncrocode is a powerful tool that allows developers to work together in real-time,
                     streamlining the development process and fostering better collaboration.
                   </p>
                 </div>
@@ -69,7 +69,7 @@ export function LandingPage() {
                   Streamline Your Development Workflow
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  RTCTD   provides a suite of powerful features to help your team work together more
+                Syncrocode   provides a suite of powerful features to help your team work together more
                   efficiently and effectively.
                 </p>
               </div>
@@ -86,8 +86,8 @@ export function LandingPage() {
                       </p>
                     </div>
                   </li>
-                  
-                  
+
+
                 </ul>
               </div>
               <div className="relative h-[400px] w-full rounded-xl bg-muted p-4">
@@ -111,7 +111,7 @@ export function LandingPage() {
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Benefits</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Boost Your Team's Productivity</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                RTCTD helps your team work more efficiently and effectively, so you can focus on building
+                  Syncrocode helps your team work more efficiently and effectively, so you can focus on building
                   great software.
                 </p>
               </div>
@@ -138,7 +138,7 @@ export function LandingPage() {
                       </p>
                     </div>
                   </li>
-                 
+
                   <li>
                     <div className="grid gap-1">
                       <h3 className="text-xl font-bold">Reduced Errors</h3>
@@ -154,7 +154,7 @@ export function LandingPage() {
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 RTCTD . All rights reserved  </p>
+        <p className="text-xs text-muted-foreground">&copy; 2024 Syncrocode . All rights reserved  </p>
         <p className="pl-[36%] text-xs text-muted-foreground">Made with ❤️ by Rahul</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
