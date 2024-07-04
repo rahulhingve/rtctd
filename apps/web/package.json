@@ -23,7 +23,11 @@
     "y-monaco": "^0.1.5",
     "y-webrtc": "^10.3.0",
     "yjs": "^13.6.18",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@prisma/client": "^5.16.0",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
+    "prisma": "^5.16.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
