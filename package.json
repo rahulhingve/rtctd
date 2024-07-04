@@ -5,7 +5,8 @@
     "build": "cd packages/db && npx prisma generate && cd ../../ && turbo build",
     "dev": "cd packages/db && npx prisma generate && cd ../../ && turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
