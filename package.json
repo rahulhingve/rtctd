@@ -1,6 +1,10 @@
 {
   "name": "rtctd",
   "private": true,
+ 
+  "prisma": {
+    "schema": "packages/db/prisma/schema.prisma"
+  },
   "scripts": {
     "build": "cd packages/db && npx prisma generate && cd ../../ && turbo build",
     "dev": "cd packages/db && npx prisma generate && cd ../../ && turbo dev",
