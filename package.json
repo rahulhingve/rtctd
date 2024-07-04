@@ -2,8 +2,8 @@
   "name": "rtctd",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
+    "build": "cd packages/db && npx prisma generate && cd ../../ && turbo build",
+    "dev": "cd packages/db && npx prisma generate && cd ../../ && turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
