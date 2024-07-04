@@ -22,7 +22,7 @@ const CodeEditor = () => {
   const providerRef = useRef(null);
   const bindingRef = useRef(null);
 
-  const initializeEditor = (roomId) => {
+  const initializeEditor = (roomId:string) => {
 
     const doc = new Y.Doc();
     const provider = new WebrtcProvider(roomId, doc);
