@@ -1,0 +1,7 @@
+Here's how you can explain Syncrocode in simple English, using terms that are easy to understand for Indian readers:
+
+Syncrocode is a website where people can write code together at the same time. It's like Google Docs, but for coding. You can see what others are typing right away, and you can run the code to check if it works. You can use different programming languages like JavaScript, Python, or Java.
+
+To use it, you sign in and either create a new room or join someone else's room using a special code. Once you're in a room, you can choose the language you want to use and start coding with others. You can see what everyone else is typing in real-time, which makes it very helpful for working together.
+
+This tool is great for team projects, teaching coding, fixing bugs together, or just quickly testing some code. It's built with modern technology to make sure it's fast and reliable, and it's easy to use for both beginners and experienced coders.
